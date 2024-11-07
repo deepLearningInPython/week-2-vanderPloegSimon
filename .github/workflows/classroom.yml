@@ -13,29 +13,32 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    - name: task1
-      id: task1
+    - name: week2task1
+      id: week2task1
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: task1
+        test-name: week2task1
         setup-command: pip install pytest pandas scipy scikit-learn
         command: pytest grade_task1.py
         timeout: 5
         max-score: 1
-    - name: task2
-      id: task2
+    - name: week2task2
+      id: week2task2
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: task2
+        test-name: week2task2
+
         setup-command: pip install pytest pandas scipy scikit-learn
         command: pytest grade_task2.py
         timeout: 5
         max-score: 1
-    - name: task3
-      id: task3
+
+    - name: week2task3
+      id: week2task3
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: task3
+        test-name: week2task3
+
         setup-command: pip install pytest pandas scipy scikit-learn
         command: pytest grade_task3.py
         timeout: 5
@@ -43,8 +46,10 @@ jobs:
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
-        TASK1_RESULTS: "${{steps.task1.outputs.result}}"
-        TASK2_RESULTS: "${{steps.task2.outputs.result}}"
-        TASK3_RESULTS: "${{steps.task3.outputs.result}}"
+
+        WEEK2TASK1_RESULTS: "${{steps.week2task1.outputs.result}}"
+        WEEK2TASK2_RESULTS: "${{steps.week2task2.outputs.result}}"
+        WEEK2TASK3_RESULTS: "${{steps.week2task3.outputs.result}}"
       with:
-        runners: task1,task2,task3
+        runners: week2task1,week2task2,week2task3
+
